@@ -22,8 +22,6 @@ const initialState = {
   isError: false,
   // Did the file upload successfully?
   isSuccessful: false,
-  // Delete this
-  isDone: false,
   // The selected file as File object
   file: null,
 };
@@ -56,14 +54,16 @@ class MainContainer extends Component {
       .post('time_report/', data)
       .then(response => {
         this.setState({
-          isSuccessful: true
+          isSuccessful: true,
+          isError: false
         });
       })
       .catch(error => { 
         // Rejected, report id the same
-        console.log(error);
+        console.error(error);
         this.setState({
-          isError: true
+          isError: true,
+          isSuccessful: false
         });
       });
   }
@@ -108,7 +108,6 @@ class MainContainer extends Component {
     this.setState({
       file,
       displayResult: true,
-      isDone: true
     });
   }
 
@@ -132,7 +131,7 @@ class MainContainer extends Component {
                 onDrop={this.onDrop}
                 style={{"width" : "100%", "height" : "20%", "border" : "1px dashed #454545"}}
               >
-                <p>Pick file by clicking on box or dragging your file directly to the dashed box.</p>
+                <p style={{ textAlign: "center" }}>Pick file by clicking on box or dragging your file directly to the dashed box.</p>
               </Dropzone>
 
               { displayResult 
@@ -145,7 +144,7 @@ class MainContainer extends Component {
                     <UploadButton
                       uploadFile={this.uploadFile}
                     />
-                    <UploadMessage
+                    <UploadMessage 
                       isError={isError}
                       isSuccessful={isSuccessful}
                     />

@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 function UploadMessage({ isError, isSuccessful }) {
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
     { isError
       ? <p>The file you are trying to upload has the same report id. Please try again by pressing the reset button.</p>
       : null
     }
-    {
-      isSuccessful
+    { isSuccessful
       ? <p>The file uploaded successfully. Lets build more features together :)</p>
       : null
     }

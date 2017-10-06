@@ -143,6 +143,9 @@ export const extractPayrollInformation = (timeReports, jobGroup) => {
 			...
 		]
 	*/
+	// No time reports, no data, return immediately
+	if (timeReports.length === 0) return;
+
 	const jobGroupDictionary = transformJobGroupToDictionary(jobGroup);
 	
 	const createPayrollInformation = (record) => {

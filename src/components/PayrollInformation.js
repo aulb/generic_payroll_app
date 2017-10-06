@@ -48,7 +48,7 @@ function PayrollInformation({
         className='-striped -highlight'
       />
       <br />
-      <div style={{ textAlign: "center" }}>
+      <div className="tip" style={{ textAlign: "center" }}>
         <em>Tip: Hold shift when sorting to multi-sort!</em>
       </div> 
     </div>
